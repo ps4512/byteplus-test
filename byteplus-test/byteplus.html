@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+    (function(win, export_obj) {
+        win['TeaAnalyticsObject'] = export_obj;
+        if (!win[export_obj]) {
+            function _collect() {
+                _collect.q.push(arguments);
+            }
+            _collect.q = _collect.q || [];
+            win[export_obj] = _collect;            
+        }
+        win[export_obj].l = +new Date();
+    })(window, 'collectEvent');
+</script>
+<script async src="https://sf16-scmcdn-sg.ibytedtos.com/goofy/log-sdk/collect/collect-autotrack-rangers.js"></script>
+</head>
+<body>
+<script>
+    window.collectEvent('init', {
+        app_id: 256261,//  Must be replaced by the "app_id" you have applied for
+        channel: 'cn',
+        log: true, // Enable debugging log
+            autotrack: true,
+    });
+    window.collectEvent('start')
+    window.collectEvent('test_event', {
+       'from': 'index',
+    })
+</script>
+
+<h1>Byteplus test</h1>
+</body>
+</html>
