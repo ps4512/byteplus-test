@@ -1,35 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script>    
-    (function(win, export_obj) {
-        win['TeaAnalyticsObject'] = export_obj;
-        if (!win[export_obj]) {
-            function _collect() {
-                _collect.q.push(arguments);
-            }
-            _collect.q = _collect.q || [];
-            win[export_obj] = _collect;            
-        }
-        win[export_obj].l = +new Date();
-    })(window, 'collectEvent');
-</script>
-<script async src="https://sf1-scmcdn-tos.pstatp.com/goofy/log-sdk/collect/collect-autotrack-rangers.js"></script>
+<!-- 开始引入 应用性能监控-->
 <script>
-    window.collectEvent('init', { 
-        app_id:256335,
-    channel: 'cn', 
-        autotrack: false  //默认关闭，需要热力图及圈选功能可开启
+    (function(i,s,o,g,r,a,m){i["RangerSiteSDKObject"]=r;(i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)}),(i[r].l=1*new Date());(a=s.createElement(o)),(m=s.getElementsByTagName(o)[0]);a.async=1;a.src=g;a.crossOrigin="anonymous";m.parentNode.insertBefore(a,m);i[r].globalPreCollectError=function(){i[r]("precollect","error",arguments)};if(typeof i.addEventListener==="function"){i.addEventListener("error",i[r].globalPreCollectError,true);i.addEventListener('unhandledrejection', i[r].globalPreCollectError)}if('PerformanceLongTaskTiming'in i){var g=i[r].lt={e:[]};g.o=new PerformanceObserver(function(l){g.e=g.e.concat(l.getEntries())});g.o.observe({entryTypes:['longtask']})}})(window,document,"script","https://tbm.snssdk.com/rangers/sdk.js?app_id=256335","RangersSiteSDK");
+    </script>
+    <script>
+    window.RangersSiteSDK("config",{
+        app_id: 256335// 这里写入在平台上注册的aid
     });
-    window.collectEvent('start')
-</script>
+    </script>
 </head>
 <body>
 <script>
-    //这里的事件 play_video、属性 video_title 只是示例，请结合自己的需求进行自定义埋点。
-    window.collectEvent('play_video', {
-        'video_title': 'the title here',
-    })
+    window.RangersSiteSDK("config", {
+app_id: 256335,// 这里写入在平台上注册的aid
+pid: "index", // 页面标识
+user_unique_id: "did", // 用户标识，推荐设置为 uid / did / username 等, 可不配置，使用默认值
+context: {
+    from: "search" // 自定义维度
+}
+})
 </script>
 
 <h1>Byteplus test</h1>
